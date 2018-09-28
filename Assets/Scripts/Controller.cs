@@ -6,65 +6,53 @@ using UnityEngine.SceneManagement;
 public class Controller : MonoBehaviour {
 
     public bool boel;
-
-    public GameObject[] listnya;
+    
     public GameObject listjuga;
-    public GameObject imagenya;
+    public GameObject captureresult;
     public GameObject simpanan;
+    public Animator anima;
 
-    public void simpan()
-    {
-        simpanan.SetActive(true);    
-    }
+    public GameObject[] listHair;
+    public GameObject[] listObjectHair;
 
-    public void closeSimpanan()
-    {
-        simpanan.SetActive(false);
-        imagenya.SetActive(false);
-    }
 
-    public void dlla()
-    {
-        imagenya.SetActive(false);
-    }
     public void showlist()
     {
-        boel = !boel;
-    }
-
-    private void Update()
-    {
-        if (boel)
+        if (!boel)
         {
-            for (int i = 0; i < listnya.Length; i++)
-            {
-                listnya[i].SetActive(true);
-            }
-        }else{
-            for (int i = 0; i < listnya.Length; i++)
-            {
-                listnya[i].SetActive(false);
-            }
+            anima.SetTrigger("in");
+            boel = true;
         }
+        else {
+            anima.SetTrigger("out");
+            boel = false;
+        }
+      
     }
 
-    public void chooselist()
+    public void chooselist(GameObject thisHair)
     {
+        for (int i = 0; i < listHair.Length; i++)
+        {
+            listHair[i].SetActive(false);
+        }
+
         listjuga.SetActive(true);
-    }
+        thisHair.SetActive(true);
+    }    
 
-    public void capture()
-    {
-        imagenya.SetActive(true);
-    }
-
-    public void closecapture()
-    {
-        imagenya.SetActive(false);
-    }
-
-    public void backs()
+    public void sceneController()
     {
         SceneManager.LoadScene("MainScene");
     }
+
+    public void chooseHair(GameObject GO)
+    {
+        for (int i = 0; i < listObjectHair.Length; i++)
+        {
+            listObjectHair[i].SetActive(false);
+        }
+        GO.SetActive(true);
+    }
+
 }

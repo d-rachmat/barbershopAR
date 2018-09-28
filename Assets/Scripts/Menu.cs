@@ -5,31 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-    public GameObject login;
-    public GameObject about;
+    public GameObject loginPanel;
+    public GameObject aboutPanel;
 
-    public void abouts()
+    public void about()
     {
-        about.SetActive(true);
+        aboutPanel.SetActive(true);
     }
 
     public void closeAbout()
     {
-        about.SetActive(false);
+        aboutPanel.SetActive(false);
     }
 
-    public void logins()
+    public void login()
     {
-        login.SetActive(true);
+        loginPanel.SetActive(true);
     }
 
     public void closeLogin()
     {
-        login.SetActive(false);
+        loginPanel.SetActive(false);
     }
 
     public void Simulator()
     {
-        SceneManager.LoadScene("faceMask");
+        SceneManager.LoadScene("ARScene");
     }
 }
